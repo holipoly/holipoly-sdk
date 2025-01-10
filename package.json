@@ -1,0 +1,116 @@
+{
+  "version": "0.7.0",
+  "license": "MIT",
+  "homepage": "https://holipoly.io/",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mirumee/holipoly-sdk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mirumee/holipoly-sdk/issues"
+  },
+  "keywords": [
+    "holipoly",
+    "sdk",
+    "@holipoly/sdk",
+    "react",
+    "typescript"
+  ],
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "start": "npm run build-types && tsdx watch",
+    "build": "npm run build-types && tsdx build",
+    "test": "tsdx test",
+    "test:watch": "tsdx test --watch",
+    "lint": "tsdx lint src test",
+    "prepare": "npm run build && husky install",
+    "size": "size-limit",
+    "analyze": "size-limit --why",
+    "build-types": "graphql-codegen --config codegen.yml",
+    "download-schema": "graphql-codegen --config codegen-introspection.yml",
+    "release": "np"
+  },
+  "peerDependencies": {
+    "@apollo/client": "^3.3.19",
+    "graphql": "^15.5.0",
+    "react": "^17.0.0 || ^18.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": false,
+    "trailingComma": "es5"
+  },
+  "np": {
+    "yarn": false
+  },
+  "name": "@holipoly/sdk",
+  "author": "Holipoly Commerce",
+  "description": "Holipoly TS SDK",
+  "module": "dist/sdk.esm.js",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "size-limit": [
+    {
+      "path": "dist/sdk.cjs.production.min.js",
+      "limit": "11 KB"
+    },
+    {
+      "path": "dist/sdk.esm.js",
+      "limit": "11 KB"
+    }
+  ],
+  "devDependencies": {
+    "@apollo/client": "^3.3.19",
+    "@graphql-codegen/cli": "1.21.5",
+    "@graphql-codegen/introspection": "^1.18.2",
+    "@graphql-codegen/typescript": "^1.22.3",
+    "@graphql-codegen/typescript-apollo-client-helpers": "^1.1.9",
+    "@graphql-codegen/typescript-operations": "^1.18.2",
+    "@pollyjs/adapter-node-http": "^5.1.1",
+    "@pollyjs/core": "^5.1.1",
+    "@pollyjs/persister-fs": "^5.1.1",
+    "@size-limit/preset-small-lib": "^4.10.2",
+    "@types/omit-deep-lodash": "^1.1.1",
+    "@types/pollyjs__adapter-node-http": "^2.0.1",
+    "@types/pollyjs__core": "^4.3.2",
+    "@types/pollyjs__persister-fs": "^2.0.1",
+    "@types/react": "^18.2.7",
+    "@types/setup-polly-jest": "^0.5.1",
+    "eslint-plugin-tsdoc": "^0.2.14",
+    "graphql": "^15.5.1",
+    "husky": "^6.0.0",
+    "jest": "^27.0.5",
+    "jsonwebtoken": "^8.5.1",
+    "msw": "^0.35.0",
+    "np": "^7.5.0",
+    "omit-deep-lodash": "^1.1.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "setup-polly-jest": "^0.9.1",
+    "size-limit": "^4.10.2",
+    "ts-jest": "^27.0.3",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.3.1",
+    "typescript": "^4.2.4"
+  },
+  "dependencies": {
+    "cross-fetch": "^3.1.4",
+    "jwt-decode": "^3.1.2"
+  }
+}
